@@ -190,12 +190,12 @@ namespace WpfApp2
 					val.Push(ans);
 					value = 0;
 				}
-				double val1, val2;
+				
 				if (c != ' ')
 				{
 
-					val1 = (double)val.Peek(); val.Pop();
-					val2 = (double)val.Peek(); val.Pop();
+					var val1 = (double)val.Peek(); val.Pop();
+					var val2 = (double)val.Peek(); val.Pop();
 
 					switch (c)
 					{
@@ -240,31 +240,33 @@ public partial class MainWindow : Window
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+			
         }
 
         private void equal_click(object sender, RoutedEventArgs e)
         {
 			calculator calc = new calculator();
-			text_box.Clear();
-	
-			string end;
+			//text_box.Clear();
+            
+            string end;
 			calc.change(equation, out end);
 			calc.Evaluate(end);
-			double answer = (double)calc.val.Peek();
+			var answer = calc.val.Peek();
+			
 			text_box.Text = "" + answer;
-			List.Push(answer);
 		}
 
         private void list_Click(object sender, RoutedEventArgs e)
         {
-			foreach (double s in List)
-			{
-				text_box.Text="" + s;
-			}
-			Console.WriteLine("----------\n");
+			
 		
 		}
+
+        private void undo_button(object sender, RoutedEventArgs e)
+        {
+			text_box.Undo();
+			
+        }
     }
     
 }
