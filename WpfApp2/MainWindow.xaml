@@ -26,8 +26,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="_9" Content="9" HorizontalAlignment="Left" Height="31" Margin="20,165,0,0" VerticalAlignment="Top" Width="49" FontSize="16" FontWeight="Bold" Click="button_click" Background="#FFF5EDED"/>
-        <Button x:Name="_8" Content="8" HorizontalAlignment="Left" Height="31" Margin="84,165,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.5,0.5" FontSize="16" FontWeight="Bold" Click="button_click">
+        <Button x:Name="_9" Content="9" HorizontalAlignment="Left" Height="31" Margin="20,165,0,0" VerticalAlignment="Top" Width="49" FontSize="16" FontWeight="Bold" Click="ButtonClick" Background="#FFF5EDED"/>
+        <Button x:Name="_8" Content="8" HorizontalAlignment="Left" Height="31" Margin="84,165,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.5,0.5" FontSize="16" FontWeight="Bold" Click="ButtonClick">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -37,29 +37,38 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="_7" Content="7" HorizontalAlignment="Left" Height="31" Margin="145,165,0,0" VerticalAlignment="Top" Width="49" Click="button_click" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="_6" Content="6" HorizontalAlignment="Left" Margin="146,210,0,0" VerticalAlignment="Top" Width="49" Height="31" FontSize="16" FontWeight="Bold" Click="button_click"/>
-        <Button x:Name="_5" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="31" FontSize="16" FontWeight="Bold" Click="button_click" Margin="84,210,0,0"/>
-        <Button x:Name="_4" Content="4" HorizontalAlignment="Left" Margin="20,210,0,0" VerticalAlignment="Top" Width="49" IsCancel="True" FontSize="16" FontWeight="Bold" Height="31" Click="button_click"/>
-        <Button x:Name="_2" Content="2" HorizontalAlignment="Left" Margin="84,255,0,0" VerticalAlignment="Top" Width="50" Height="31" FontSize="16" FontWeight="Bold" Click="button_click"/>
-        <Button x:Name="_1" Content="1" HorizontalAlignment="Left" Margin="21,256,0,0" VerticalAlignment="Top" Click="button_click" Width="49" Height="31" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="_3" Content="3" HorizontalAlignment="Left" Margin="147,255,0,0" VerticalAlignment="Top" Width="49" Height="31" FontSize="16" FontWeight="Bold" Click="button_click"/>
-        <Button x:Name="_0" Content="0" HorizontalAlignment="Left" Margin="86,301,0,0" VerticalAlignment="Top" Width="48" Height="31" FontSize="16" FontWeight="Bold" Click="button_click"/>
-        <Button x:Name="__dot" Content="." HorizontalAlignment="Left" Margin="148,302,0,0" VerticalAlignment="Top" Width="49" Height="31" FontSize="16" FontWeight="Bold" Click="button_click"/>
-        <Button x:Name="modulos" Content="%" HorizontalAlignment="Left" Height="31" Margin="22,301,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.304,1.001" FontSize="16" FontWeight="Bold" Click="button_click"/>
-        <Button x:Name="multiply" Content="*" HorizontalAlignment="Left" Margin="212,165,0,0" VerticalAlignment="Top" Width="40" Height="31" FontSize="16" FontWeight="Bold" Click="button_click"/>
-        <Button x:Name="divide" Content="/" HorizontalAlignment="Left" Margin="213,210,0,0" VerticalAlignment="Top" Click="button_click" Width="40" Height="31" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="sum" Content="+" HorizontalAlignment="Left" Margin="215,301,0,0" VerticalAlignment="Top" Width="40" Height="31" FontSize="16" FontWeight="Bold" Click="button_click"/>
-        <Button x:Name="minus" Content="-" HorizontalAlignment="Left" Margin="214,255,0,0" VerticalAlignment="Top" Width="40" Height="31" FontSize="16" FontWeight="Bold" Click="button_click"/>
-        <Button x:Name="list" Content="List" HorizontalAlignment="Left" Margin="85,125,0,0" VerticalAlignment="Top" Width="49" Height="20" FontWeight="Normal" Click="list_Click"/>
-        <Button x:Name="clear" Content="C" HorizontalAlignment="Left" Margin="145,124,0,0" VerticalAlignment="Top" Width="49" Height="20" IsDefault="True" FontWeight="Bold" Click="clear_Click"/>
-        <Button x:Name="Undo" Content="" HorizontalAlignment="Left" Margin="22,125,0,0" VerticalAlignment="Top" Width="48" Height="20" FontWeight="Normal" Click="undo_button" BorderBrush="#FFFFF9F9">
+        <Button x:Name="_7" Content="7" HorizontalAlignment="Left" Height="31" Margin="145,165,0,0" VerticalAlignment="Top" Width="49" Click="ButtonClick" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="_6" Content="6" HorizontalAlignment="Left" Margin="146,210,0,0" VerticalAlignment="Top" Width="49" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="_5" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick" Margin="84,210,0,0"/>
+        <Button x:Name="_4" Content="4" HorizontalAlignment="Left" Margin="20,210,0,0" VerticalAlignment="Top" Width="49" IsCancel="True" FontSize="16" FontWeight="Bold" Height="31" Click="ButtonClick"/>
+        <Button x:Name="_2" Content="2" HorizontalAlignment="Left" Margin="84,255,0,0" VerticalAlignment="Top" Width="50" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="_1" Content="1" HorizontalAlignment="Left" Margin="21,256,0,0" VerticalAlignment="Top" Click="ButtonClick" Width="49" Height="31" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="_3" Content="3" HorizontalAlignment="Left" Margin="147,255,0,0" VerticalAlignment="Top" Width="49" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="_0" Content="0" HorizontalAlignment="Left" Margin="86,301,0,0" VerticalAlignment="Top" Width="48" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="__dot" Content="." HorizontalAlignment="Left" Margin="148,302,0,0" VerticalAlignment="Top" Width="49" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="modulos" Content="%" HorizontalAlignment="Left" Height="31" Margin="22,301,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.304,1.001" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="multiply" Content="*" HorizontalAlignment="Left" Margin="212,165,0,0" VerticalAlignment="Top" Width="40" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="divide" Content="/" HorizontalAlignment="Left" Margin="213,210,0,0" VerticalAlignment="Top" Click="ButtonClick" Width="40" Height="31" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="sum" Content="+" HorizontalAlignment="Left" Margin="215,301,0,0" VerticalAlignment="Top" Width="40" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="minus" Content="-" HorizontalAlignment="Left" Margin="214,255,0,0" VerticalAlignment="Top" Width="40" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="list" Content="List" HorizontalAlignment="Left" Margin="85,125,0,0" VerticalAlignment="Top" Width="49" Height="28" FontWeight="Normal" Click="ListClick"/>
+        <Button x:Name="clear" Content="C" HorizontalAlignment="Left" Margin="145,124,0,0" VerticalAlignment="Top" Width="49" Height="28" IsDefault="True" FontWeight="Bold" Click="ClearClick"/>
+        <Button x:Name="Undo" Content="" HorizontalAlignment="Left" Margin="22,125,0,0" VerticalAlignment="Top" Width="48" Height="28" FontWeight="Normal" Click="UndoButton" BorderBrush="#FFFFF9F9">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/undo-redo-icon-0.jpg"/>
             </Button.Background>
         </Button>
-        <Button x:Name="equal" Content="=" HorizontalAlignment="Left" Margin="212,124,0,0" VerticalAlignment="Top" Width="40" Height="20" Click="equal_click" FontWeight="Bold" FontStyle="Normal"/>
-        <TextBox x:Name="text_box" TextWrapping="NoWrap" TextChanged="TextBox_TextChanged" Margin="20,26,18,264" AcceptsReturn="True" Panel.ZIndex="100" AutomationProperties.IsRequiredForForm="True"/>
+        <Button x:Name="equal" Content="=" HorizontalAlignment="Left" Margin="212,124,0,0" VerticalAlignment="Top" Width="40" Height="28" Click="EqualClick" FontWeight="Bold" FontStyle="Normal" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.055"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <TextBox x:Name="textBox" TextWrapping="NoWrap" TextChanged="TextBox_TextChanged" Margin="20,26,18,264" AcceptsReturn="True" Panel.ZIndex="100" AutomationProperties.IsRequiredForForm="True"/>
 
     </Grid>
 </Window>

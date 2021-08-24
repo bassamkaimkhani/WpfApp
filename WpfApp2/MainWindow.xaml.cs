@@ -20,33 +20,33 @@ namespace WpfApp2
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-     	class calculator
+     	class Calculator
 	{
 	private const int IN = 0;
 	private const int OUT = 1;
-	public Stack val = new Stack();
+	public Stack Val = new Stack();
 	Stack opt = new Stack();
 
-	private bool isDigit(char c)
+	private bool IsDigit(char c)
 	{
 		return (c >= '0' && c <= '9');
 	}
-	private string operat = "+-*/%=.)(";
-	private bool in_set(char theChar)
+	private string Operat = "+-*/%=.)(";
+	private bool IsCharacter(char theChar)
 	{
 		for (int i = 0; i < 9; i++)
 		{
-			if (theChar == operat[i])
+			if (theChar == Operat[i])
 				return true;
 		}
 		return false;
 	}
-	public bool del_space(string theString)
+	public bool DelSpace(string theString)
 	{
 		string store = null;
 		for (int i = 0; i < theString.Length; i++)
 		{
-			if (in_set(theString[i]) || isDigit(theString[i]) || theString == "exit" || theString == "list" || theString == "del")
+			if (IsCharacter(theString[i]) || IsDigit(theString[i]))
 			{
 				store += theString[i];
 			}
@@ -74,7 +74,7 @@ namespace WpfApp2
 			default: return -1;
 		}
 	}
-	public bool change(string start, out string end)
+	public bool changeIntoNumber(string start, out string end)
 	{
 		end = "";
 		int val = 0;
@@ -83,7 +83,7 @@ namespace WpfApp2
 		for (int i = 0; i < start.Length; i++)
 		{
 			c = start[i];
-			if (isDigit(c))
+			if (IsDigit(c))
 			{
 				end = end + c;
 				val *= 10;
@@ -150,23 +150,22 @@ namespace WpfApp2
 			end += opt.Peek();
 			end += ' ';
 			opt.Pop();
-
 		}
 		return true;
 	}
-	public bool Evaluate(string Equa)
+	public bool EvaluateEquation(string equation)
 	{
 		int value = 0;
 		int state = OUT;
 		char c;
 		bool dot = false;
 		double count = 1.0;
-		for (int i = 0; i < Equa.Length; i++)
+		for (int i = 0; i < equation.Length; i++)
 		{
-			c = Equa[i];
-			if (isDigit(c) || c == '.')
+			c = equation[i];
+			if (IsDigit(c) || c == '.')
 			{
-				if (isDigit(c))
+				if (IsDigit(c))
 				{
 					value *= 10;
 					value += c - '0';
@@ -187,85 +186,90 @@ namespace WpfApp2
 				count = 1.0;
 				if (state == IN)
 				{
-					val.Push(ans);
+					Val.Push(ans);
 					value = 0;
 				}
 				
 				if (c != ' ')
 				{
-
-					var val1 = (double)val.Peek(); val.Pop();
-					var val2 = (double)val.Peek(); val.Pop();
-
+					var val1 = (double)Val.Peek(); Val.Pop();
+					var val2 = (double)Val.Peek(); Val.Pop();
 					switch (c)
 					{
-						case '+': val.Push(val1 + val2); break;
-						case '-': val.Push(val2 - val1); break;
-						case '*': val.Push(val1 * val2); break;
-						case '/': val.Push(val2 / val1); break;
-						case '%': val.Push((long)val2 % (long)val1); break;
+						case '+': Val.Push(val1 + val2); break;
+						case '-': Val.Push(val2 - val1); break;
+						case '*': Val.Push(val1 * val2); break;
+						case '/': Val.Push(val2 / val1); break;
+						case '%': Val.Push((long)val2 % (long)val1); break;
 					}
-
-
 				}
 				state = OUT;
 			}
 		}
+		if (equation.Length == 1)
+			Val.Push(value);
 		return true;
 	}
 	
-	}
+}
 
 public partial class MainWindow : Window
-    {
-		string equation;
-	 Stack List = new Stack();
+{
+		string equation;//initizing string to store the equation.
+		Stack stackList = new Stack();//initlizing stack for storing answers.
 		public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void button_click(object sender, RoutedEventArgs e)
+        private void ButtonClick(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            equation = text_box.Text + button.Content;
-			text_box.Text = equation;
+            equation = textBox.Text + button.Content;
+			textBox.Text = equation;
 		
 		}
-
-        private void clear_Click(object sender, RoutedEventArgs e)
+        private void ClearClick(object sender, RoutedEventArgs e)
         {
-            text_box.Clear();
+            textBox.Clear();
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
 			
         }
-
-        private void equal_click(object sender, RoutedEventArgs e)
+        private void EqualClick(object sender, RoutedEventArgs e)
         {
-			calculator calc = new calculator();
-			//text_box.Clear();
-            
-            string end;
-			calc.change(equation, out end);
-			calc.Evaluate(end);
-			var answer = calc.val.Peek();
-			
-			text_box.Text = "" + answer;
+			Calculator calc = new Calculator(); 
+			if (!calc.DelSpace(equation))
+			{
+				textBox.Clear();
+				textBox.Text = textBox.Text + "Syntax Error";
+				
+			}
+			else
+			{
+				string endString;// New string to store the infinix value.
+				calc.changeIntoNumber(equation, out endString);//Converts into numbers.
+				calc.EvaluateEquation(endString);//Calculate the Answer and store in Stack Val.
+				var answer = calc.Val.Peek();
+				stackList.Push(answer);
+				textBox.Text = equation + "=" + answer;
+
+			}
 		}
-
-        private void list_Click(object sender, RoutedEventArgs e)
+        private void ListClick(object sender, RoutedEventArgs e)
         {
-			
-		
+
+			foreach (var s in stackList)
+			{
+				//textBox.Clear();
+                string listPrint = s + "\n"; //Prints out all the previous answers
+				textBox.Text = textBox.Text + listPrint;
+			}
 		}
-
-        private void undo_button(object sender, RoutedEventArgs e)
+        private void UndoButton(object sender, RoutedEventArgs e)
         {
-			text_box.Undo();
-			
+			textBox.Undo();//For undo..
         }
     }
     
