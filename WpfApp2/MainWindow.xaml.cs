@@ -216,7 +216,7 @@ namespace WpfApp2
 public partial class MainWindow : Window
 {
 		string equation;//initizing string to store the equation.
-		Stack stackList = new Stack();//initlizing stack for storing answers.
+		Calculator calc = new Calculator();
 		public MainWindow()
         {
             InitializeComponent();
@@ -239,7 +239,7 @@ public partial class MainWindow : Window
         }
         private void EqualClick(object sender, RoutedEventArgs e)
         {
-			Calculator calc = new Calculator(); 
+			
 			if (!calc.DelSpace(equation))
 			{
 				textBox.Clear();
@@ -252,24 +252,21 @@ public partial class MainWindow : Window
 				calc.changeIntoNumber(equation, out endString);//Converts into numbers.
 				calc.EvaluateEquation(endString);//Calculate the Answer and store in Stack Val.
 				var answer = calc.Val.Peek();
-				stackList.Push(answer);
 				textBox.Text = equation + "=" + answer;
 
 			}
 		}
         private void ListClick(object sender, RoutedEventArgs e)
         {
-
-			foreach (var s in stackList)
+			textBox.Clear();
+			foreach (var s in calc.Val)
 			{
-				//textBox.Clear();
-                string listPrint = s + "\n"; //Prints out all the previous answers
-				textBox.Text = textBox.Text + listPrint;
+				textBox.Text= textBox.Text + s +"\n";
 			}
 		}
         private void UndoButton(object sender, RoutedEventArgs e)
         {
-			textBox.Undo();//For undo..
+			textBox.Undo();
         }
     }
     
