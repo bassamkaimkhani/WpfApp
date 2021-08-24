@@ -24,15 +24,15 @@ namespace WpfApp2
 	{
 	private const int IN = 0;
 	private const int OUT = 1;
-	public Stack Val = new Stack();
-	Stack opt = new Stack();
+	public Stack Val = new Stack();//Stack for storing values.
+	Stack opt = new Stack();//Stack for storing operators.
 
-	private bool IsDigit(char c)
+	private bool IsDigit(char c)//Checking Number
 	{
 		return (c >= '0' && c <= '9');
 	}
-	private string Operat = "+-*/%=.)(";
-	private bool IsCharacter(char theChar)
+	private string Operat = "+-*/%=.)(";//Character used in program.
+	private bool IsCharacter(char theChar)//Checking Character.
 	{
 		for (int i = 0; i < 9; i++)
 		{
@@ -41,7 +41,7 @@ namespace WpfApp2
 		}
 		return false;
 	}
-	public bool DelSpace(string theString)
+	public bool DelSpace(string theString)//For deleting spaces and checking numbers and characters.
 	{
 		string store = null;
 		for (int i = 0; i < theString.Length; i++)
@@ -60,7 +60,7 @@ namespace WpfApp2
 		return true;
 	}
 
-	private int BODMAS(char c)
+	private int BODMAS(char c)// Applying BODMAS rule.
 	{
 		switch (c)
 		{
@@ -74,7 +74,7 @@ namespace WpfApp2
 			default: return -1;
 		}
 	}
-	public bool changeIntoNumber(string start, out string end)
+	public bool changeIntoNumber(string start, out string end)//For Conversion into Number string.
 	{
 		end = "";
 		int val = 0;
@@ -123,7 +123,6 @@ namespace WpfApp2
 				{
 					while (true)
 					{
-
 						if (opt.Count == 0)
 						{
 							opt.Push(c);
@@ -153,7 +152,7 @@ namespace WpfApp2
 		}
 		return true;
 	}
-	public bool EvaluateEquation(string equation)
+	public bool EvaluateEquation(string equation)//For Calculation.
 	{
 		int value = 0;
 		int state = OUT;
@@ -216,18 +215,16 @@ namespace WpfApp2
 public partial class MainWindow : Window
 {
 		string equation;//initizing string to store the equation.
-		Calculator calc = new Calculator();
+		Calculator calc = new Calculator();//Inilizing Calculator Class.
 		public MainWindow()
         {
             InitializeComponent();
         }
-
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             equation = textBox.Text + button.Content;
 			textBox.Text = equation;
-		
 		}
         private void ClearClick(object sender, RoutedEventArgs e)
         {
@@ -238,13 +235,11 @@ public partial class MainWindow : Window
 			
         }
         private void EqualClick(object sender, RoutedEventArgs e)
-        {
-			
+        {			
 			if (!calc.DelSpace(equation))
 			{
 				textBox.Clear();
 				textBox.Text = textBox.Text + "Syntax Error";
-				
 			}
 			else
 			{
@@ -253,7 +248,6 @@ public partial class MainWindow : Window
 				calc.EvaluateEquation(endString);//Calculate the Answer and store in Stack Val.
 				var answer = calc.Val.Peek();
 				textBox.Text = equation + "=" + answer;
-
 			}
 		}
         private void ListClick(object sender, RoutedEventArgs e)
@@ -267,6 +261,13 @@ public partial class MainWindow : Window
         private void UndoButton(object sender, RoutedEventArgs e)
         {
 			textBox.Undo();
+        }
+        private void BackSpace(object sender, RoutedEventArgs e)
+        {
+			if (textBox.Text.Length>0)
+            {
+				textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
+            }
         }
     }
     

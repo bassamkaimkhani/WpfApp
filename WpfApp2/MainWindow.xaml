@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
        
-        Title="Calculator" Height="384" Width="280" OpacityMask="#FF9B4141" ResizeMode="NoResize" Icon="/purepng.com-calculator-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596017qe0p7.png" >
+        Title="Calculator" Height="384" Width="334" OpacityMask="#FF9B4141" ResizeMode="NoResize" Icon="/purepng.com-calculator-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596017qe0p7.png" >
     <Window.Foreground>
         <ImageBrush/>
     </Window.Foreground>
     <Window.Style>
         <Style/>
     </Window.Style>
-    <Grid OpacityMask="#CCA43D" Visibility="Visible" Margin="0,0,0,3" Opacity="0.965" >
+    <Grid OpacityMask="#CCA43D" Visibility="Visible" Margin="0,0,0,1" Opacity="0.965" >
         <Grid.Background>
             <ImageBrush ImageSource="/crop.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
@@ -46,7 +46,7 @@
         <Button x:Name="_3" Content="3" HorizontalAlignment="Left" Margin="147,255,0,0" VerticalAlignment="Top" Width="49" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
         <Button x:Name="_0" Content="0" HorizontalAlignment="Left" Margin="86,301,0,0" VerticalAlignment="Top" Width="48" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
         <Button x:Name="__dot" Content="." HorizontalAlignment="Left" Margin="148,302,0,0" VerticalAlignment="Top" Width="49" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
-        <Button x:Name="modulos" Content="%" HorizontalAlignment="Left" Height="31" Margin="22,301,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.304,1.001" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="modulos" Content="00" HorizontalAlignment="Left" Height="31" Margin="22,301,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.304,1.001" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
         <Button x:Name="multiply" Content="*" HorizontalAlignment="Left" Margin="212,165,0,0" VerticalAlignment="Top" Width="40" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
         <Button x:Name="divide" Content="/" HorizontalAlignment="Left" Margin="213,210,0,0" VerticalAlignment="Top" Click="ButtonClick" Width="40" Height="31" FontSize="16" FontWeight="Bold"/>
         <Button x:Name="sum" Content="+" HorizontalAlignment="Left" Margin="215,301,0,0" VerticalAlignment="Top" Width="40" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
@@ -58,7 +58,10 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/undo-redo-icon-0.jpg"/>
             </Button.Background>
         </Button>
-        <Button x:Name="equal" Content="=" HorizontalAlignment="Left" Margin="212,124,0,0" VerticalAlignment="Top" Width="40" Height="28" Click="EqualClick" FontWeight="Bold" FontStyle="Normal" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="BackSpaceClick" Content="" HorizontalAlignment="Left" Margin="209,121,0,0" VerticalAlignment="Top" Width="44" Height="34" Click="BackSpace" FontWeight="Bold" FontStyle="Normal" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/backspace.png" Stretch="UniformToFill"/>
+            </Button.Background>
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -68,7 +71,20 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox x:Name="textBox" TextWrapping="NoWrap" TextChanged="TextBox_TextChanged" Margin="20,26,18,264" AcceptsReturn="True" Panel.ZIndex="100" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBox x:Name="textBox" TextWrapping="NoWrap" TextChanged="TextBox_TextChanged" Margin="20,26,17,264" AcceptsReturn="True" Panel.ZIndex="100" AutomationProperties.IsRequiredForForm="True" Width="292" Height="77"/>
+        <Button x:Name="multiply_Copy" Content="(" HorizontalAlignment="Left" Margin="271,165,0,0" VerticalAlignment="Top" Width="40" Height="31" FontSize="16" FontWeight="Bold" Click="ButtonClick"/>
+        <Button x:Name="divide_Copy" Content=")" HorizontalAlignment="Left" Margin="273,210,0,0" VerticalAlignment="Top" Click="ButtonClick" Width="40" Height="31" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="Equal" Content="=" HorizontalAlignment="Left" Margin="273,255,0,0" VerticalAlignment="Top" Width="40" Height="77" FontSize="16" FontWeight="Bold" Click="EqualClick"/>
+        <Button x:Name="equal_Copy" Content="%" HorizontalAlignment="Left" Margin="271,124,0,0" VerticalAlignment="Top" Width="40" Height="28" FontWeight="Bold" FontStyle="Normal" RenderTransformOrigin="0.5,0.5" Click="ButtonClick">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.055"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
     </Grid>
 </Window>

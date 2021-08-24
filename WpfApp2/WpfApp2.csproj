@@ -9,12 +9,15 @@
   <ItemGroup>
     <None Remove="21-211657_cool-background-png-windows-10-background-3d.png" />
     <None Remove="2222935.png" />
+    <None Remove="935072.png" />
+    <None Remove="backspace.png" />
     <None Remove="crop.jpg" />
     <None Remove="purepng.com-calculator-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596017qe0p7.png" />
     <None Remove="undo-redo-icon-0.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="backspace.png" />
     <Resource Include="crop.jpg" />
     <Resource Include="purepng.com-calculator-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596017qe0p7.png" />
     <Resource Include="undo-redo-icon-0.jpg" />
