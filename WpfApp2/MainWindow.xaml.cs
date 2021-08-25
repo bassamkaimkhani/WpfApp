@@ -176,7 +176,7 @@ namespace WpfApp2
 				{
 					dot = true;
 					continue;
-				}
+				}				
 			}
 			else
 			{
@@ -205,7 +205,7 @@ namespace WpfApp2
 				state = OUT;
 			}
 		}
-		if (equation.Length == 1)
+		if (equation.Length<2)
 			Val.Push(value);
 		return true;
 	}
@@ -235,27 +235,21 @@ public partial class MainWindow : Window
 			
         }
         private void EqualClick(object sender, RoutedEventArgs e)
-        {			
-			if (!calc.DelSpace(equation))
-			{
-				textBox.Clear();
-				textBox.Text = textBox.Text + "Syntax Error";
-			}
-			else
-			{
-				string endString;// New string to store the infinix value.
-				calc.changeIntoNumber(equation, out endString);//Converts into numbers.
-				calc.EvaluateEquation(endString);//Calculate the Answer and store in Stack Val.
-				var answer = calc.Val.Peek();
-				textBox.Text = equation + "=" + answer;
-			}
+        {
+			calc.DelSpace(equation);
+			string endString;// New string to store the infinix value.
+			calc.changeIntoNumber(equation, out endString);//Converts into numbers.
+			calc.EvaluateEquation(endString);//Calculate the Answer and store in Stack Val.
+			var answer = calc.Val.Peek();
+			textBox.Text = equation + "=" + answer;
+			
 		}
         private void ListClick(object sender, RoutedEventArgs e)
         {
 			textBox.Clear();
 			foreach (var s in calc.Val)
 			{
-				textBox.Text= textBox.Text + s +"\n";
+				textBox.Text = textBox.Text + "-> " + s + "\n";
 			}
 		}
         private void UndoButton(object sender, RoutedEventArgs e)
